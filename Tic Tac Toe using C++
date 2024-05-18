@@ -1,0 +1,143 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+void print(vector<char> &arr)
+{
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (i % 5 == 0)
+        {
+            cout << endl;
+        }
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+void arrChangeX(vector<char> &arr, char x)
+{
+    for (int i = 0; i < arr.size(); i += 2)
+    {
+        if (arr[i] == x)
+        {
+            arr[i] = 'X';
+        }
+    }
+    return;
+}
+void arrChangeO(vector<char> &arr, char x)
+{
+    for (int i = 0; i < arr.size(); i += 2)
+    {
+        if (arr[i] == x)
+        {
+            arr[i] = 'O';
+        }
+    }
+    return;
+}
+int main()
+{
+    cout << "THE Game <<< TIC TAC TOE >>>" << endl;
+    while (true)
+    {
+        vector<char> v;
+        v.push_back('1'); // 0
+        v.push_back('|'); // 1
+        v.push_back('2'); // 2
+        v.push_back('|'); // 3
+        v.push_back('3'); // 4
+        v.push_back('-'); // 5
+        v.push_back('|'); // 6
+        v.push_back('-'); // 7
+        v.push_back('|'); // 8
+        v.push_back('-'); // 9
+        v.push_back('4'); // 10
+        v.push_back('|'); // 11
+        v.push_back('5'); // 12
+        v.push_back('|'); // 13
+        v.push_back('6'); // 14
+        v.push_back('-'); // 15
+        v.push_back('|'); // 16
+        v.push_back('-'); // 17
+        v.push_back('|'); // 18
+        v.push_back('-'); // 19
+        v.push_back('7'); // 20
+        v.push_back('|'); // 21
+        v.push_back('8'); // 22
+        v.push_back('|'); // 23
+        v.push_back('9'); // 24
+        print(v);
+
+        char x, y;
+        int check;
+        for (int i = 0; i < 5; i++)
+        {
+
+            cout << "Enter number position for 'X' between '1-9' : ";
+            cin >> x;
+            arrChangeX(v, x);
+            print(v);
+            if (i >= 2)
+            {
+                if (v[0] == v[2] && v[2] == v[4])
+                {
+                    cout << v[0] << " Wins!" << endl;
+                    break;
+                }
+                else if (v[10] == v[12] && v[12] == v[14])
+                {
+                    cout << v[10] << " Wins!" << endl;
+                    break;
+                }
+                else if (v[20] == v[22] && v[22] == v[24])
+                {
+                    cout << v[20] << " Wins!" << endl;
+                    break;
+                }
+                else if (v[0] == v[10] && v[10] == v[20])
+                {
+                    cout << v[0] << " Wins!" << endl;
+                    break;
+                }
+                else if (v[2] == v[12] && v[12] == v[22])
+                {
+                    cout << v[2] << " Wins!" << endl;
+                    break;
+                }
+                else if (v[4] == v[14] && v[14] == v[24])
+                {
+                    cout << v[4] << " Wins!" << endl;
+                    break;
+                }
+                else if (v[0] == v[12] && v[12] == v[24])
+                {
+                    cout << v[10] << " Wins!" << endl;
+                    break;
+                }
+                else if (v[4] == v[12] && v[12] == v[20])
+                {
+                    cout << v[10] << " Wins!" << endl;
+                    break;
+                }
+            }
+            if (i == 4)
+            {
+                cout << "Its a draw!!!!" << endl;
+                break;
+            }
+            cout << "Enter number position for 'O' between '1-9' : ";
+            cin >> y;
+            arrChangeO(v, y);
+            print(v);
+        }
+        cout << "<<<<<<<<<< Wanna Play More >>>>>>>>>>" << endl;
+        cout << "Enter any number to play more or Enter '0' to exit the game : ";
+        cin >> check;
+        if (check == 0)
+        {
+            cout << "Thank You for Playing this Game see You soon!!!!!!!!!" << endl;
+            break;
+        }
+    }
+    return 0;
+}
